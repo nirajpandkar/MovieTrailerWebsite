@@ -40,7 +40,7 @@ main_page_head = '''
             padding-top: 20px;
         }
         .movie-tile:hover {
-            background-color: #EEE;
+            /*background-color: #EEE;*/
             cursor: pointer;
         }
         .scale-media {
@@ -56,6 +56,46 @@ main_page_head = '''
             top: 0;
             background-color: white;
         }
+
+        /*Flipping animation css start*/
+
+        #f1_container {
+              position: relative;
+              margin: 10px auto;
+              width: 380px;
+              height: 425px;
+              z-index: 1;
+        }
+        #f1_container {
+          perspective: 1000;
+        }
+        #f1_card {
+          width: 90%;
+          height: 100%;
+          transform-style: preserve-3d;
+          transition: all 0.5s linear;
+        }
+        #f1_container:hover #f1_card {
+          transform: rotateY(180deg);
+          box-shadow: -5px 5px 5px #aaa;
+        }
+        .face {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+        }
+        .face.back {
+          display: block;
+          transform: rotateY(180deg);
+          box-sizing: border-box;
+          padding: 10px;
+          color: white;
+          font-family: Verdana;
+          text-align: center;
+          background-color: #aaa;
+        }
+        /*Flipping animation css end*/
     </style>
     <script type="text/javascript" charset="utf-8">
         // Pause the video when the modal is closed
@@ -122,9 +162,24 @@ main_page_content = '''
 
 # A single movie entry html template
 movie_tile_content = '''
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
-    <img src="{poster_image_url}" width="220" height="342">
-    <h2>{movie_title}</h2>
+<div id="f1_container" class="col-lg-4 movie-tile" data-trailer-youtube-id="
+{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
+    <div id="f1_card">
+        <div class="front face text-center" style="float:left">
+            <img src="{poster_image_url}" width="220" height="342">
+        </div>
+        <div class = "back face">
+            <h2><span style="font-weight:bold">{movie_title}</h2>
+            <h4><span style = "font-weight:bold">Summary: </h4></span>
+            <h5>{movie_storyline}</h5>
+            <h4><span style = "font-weight:bold">Directors: </h4></span>
+            <h5>{movie_directors}</h5>
+            <h4><span style = "font-weight:bold">Stars: </h4></span>
+            <h5>{movie_stars}</h5>
+            <h4><span style = "font-weight:bold">IMDB rating: </h4></span>
+            <h5>{IMDB_rating}</h5>
+        </div>
+    </div>
 </div>
 '''
 
@@ -146,6 +201,11 @@ def create_movie_tiles_content(movies):
             movie_title=movie.title,
             poster_image_url=movie.poster_image_url,
             trailer_youtube_id=trailer_youtube_id,
+            IMDB_rating=movie.imdb_rating,
+            movie_directors=movie.directors,
+            movie_stars=movie.stars,
+            movie_storyline=movie.storyline,
+            movie_writers=movie.writers
         )
     return content
 
