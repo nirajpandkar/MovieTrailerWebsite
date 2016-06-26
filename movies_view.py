@@ -205,7 +205,6 @@ def create_movie_tiles_content(movies):
             movie_directors=movie.directors,
             movie_stars=movie.stars,
             movie_storyline=movie.storyline,
-            movie_writers=movie.writers
         )
     return content
 
