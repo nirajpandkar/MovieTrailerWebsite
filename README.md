@@ -47,6 +47,10 @@ You can add movies to the media_center.py in the following way -
 Also don't forget to add the movie_name_variable to the movies list - 
 `movies = [movie1, movie2, movie_name_variable]`
 
+## Resources referred
+
+For flip animation - http://css3.bradshawenterprises.com/flip/
+
 ## Licence
 
 MIT [Niraj Pandkar](https://github.com/nirajpandkar)
