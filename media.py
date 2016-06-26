@@ -2,6 +2,7 @@ import webbrowser
 import requests
 from bs4 import BeautifulSoup
 
+
 class Movie:
     """
     Methods:
@@ -57,4 +58,3 @@ class Movie:
     def show_trailer(self):
         # function to fireup the trailer after clicking
         webbrowser.open(self.trailer_youtube_url)
-print Movie.__doc__
