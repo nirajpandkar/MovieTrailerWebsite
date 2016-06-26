@@ -2,6 +2,8 @@
 
 > A simple website to show movie information including their trailers.
 
+![alt text](Images/freshtomatoes_2in1.png "Movies Trailer Screenshot")
+
 ## Installation
 
 Things you'll need to install to make the site work - 
@@ -32,6 +34,11 @@ To open up the website in the browser -
 Try _hovering over_ the movie posters to reveal more information about that movie.
 _Click_ on any poster to watch the corresponding trailer.
 
+#### API used -
+ [OMDb](http://www.omdbapi.com/) - Extracted movie information like stars, directors, IMDb rating, plot from a JSON structure
+#### Problems which may occur
+
+If you come across `InsecurePlatformWarning` please refer to this [resolved issue](https://github.com/nirajpandkar/MovieTrailerWebsite/issues/3).
 ## Contributing
 
 You can add movies to the media_center.py in the following way - 
